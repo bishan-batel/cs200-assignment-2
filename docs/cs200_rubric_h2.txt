@@ -1,0 +1,18 @@
+Grading rubric for homework assignment #2
+
+(*) 'MyMesh.cpp' compilation and code quality
+  -- Code compiles without errors or warnings using the MSVC compiler
+  -- Code compiles without errors or warnings using the g++ compiler
+  -- Heading of all files contain the required assignment information
+  -- Uses good coding practices
+(/5)
+
+(*) MyMesh correctness
+  -- Correct implementation of mesh vertices, edges, faces
+  -- Correct implementation of center and dimensions functions
+(/5)
+
+(*) MyMesh efficiency
+  -- Efficient implementation of all functions
+(/5)
+
