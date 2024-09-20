@@ -1,22 +1,21 @@
 #pragma once
+
+#include <vector>
 #include "Mesh.h"
 
 namespace cs200 {
   class MyMesh final : public cs200::Mesh {
-    std::size_t vertices_length{0}, faces_length{0}, edges_length{0};
-    glm::vec4 *vertices{nullptr};
+    std::vector<glm::vec4> vertices{};
+
+    std::vector<Edge> edges{};
+    std::vector<Face> faces{};
 
     struct {
       glm::vec4 center{}, size{};
     } bounding;
 
-    Face *faces{nullptr};
-    Edge *edges{nullptr};
-
   public:
     MyMesh();
-
-    ~MyMesh() override;
 
     int vertexCount() const override;
 
@@ -36,5 +35,7 @@ namespace cs200 {
 
   private:
     void calculate_bounding_box();
+    static float easing_function(float t);
+    static glm::vec4 polar_to_cartesian(glm::vec2 polar, bool point = true);
   };
 } // namespace cs200

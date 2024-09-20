@@ -1,11 +1,10 @@
 #include "MyMesh.h"
-#include <iostream>
 #include "Affine.h"
 
 namespace cs200 {
 
   constexpr size_t REVOLUTIONS = 50;
-  constexpr size_t DETAIL = 10000;
+  constexpr size_t DETAIL = 10;
   constexpr float MIN_WIDTH = 0.01f;
   constexpr float MAX_WIDTH = 0.1f;
   const float PI = 4.f * glm::atan(1.f);
@@ -27,6 +26,13 @@ namespace cs200 {
       constexpr float dt = 0.01f;
       const vec4 derivative =
           glm::normalize((polar_to_cartesian(point((t + dt), PI * 2.f * REVOLUTIONS * (t + dt))) - ref_point) / dt);
+
+      /* const vec4 derivative = glm::normalize(polar_to_cartesian( */
+      /*     { */
+      /*         glm::cos(ref_point_polar.y) + -ref_point_polar.y * t * glm::sin(ref_point_polar.y), */
+      /*         glm::sin(ref_point_polar.y) + ref_point_polar.y * t * glm::cos(ref_point_polar.y), */
+      /*     }, */
+      /*     false)); */
 
       const vec4 normal = vector(-derivative.y, derivative.x) * (MIN_WIDTH + easing_function(t) * MAX_WIDTH);
 
@@ -50,10 +56,6 @@ namespace cs200 {
     }
 
     calculate_bounding_box();
-
-    std::cout << vertices.size() << std::endl;
-    std::cout << edges.size() << std::endl;
-    std::cout << faces.size() << std::endl;
   };
 
   int MyMesh::vertexCount() const { return (int) vertices.size(); }
@@ -87,5 +89,7 @@ namespace cs200 {
   glm::vec4 MyMesh::polar_to_cartesian(glm::vec2 polar, bool point) {
     return {polar.x * glm::cos(polar.y), polar.x * glm::sin(polar.y), 0.f, point ? 1.0f : 0.0f};
   }
-  float MyMesh::easing_function(float t) { return t * glm::exp(t - 1.f); }
+  float MyMesh::easing_function(float t) { 
+    return t * glm::exp(t - 1.f); 
+  }
 } // namespace cs200
