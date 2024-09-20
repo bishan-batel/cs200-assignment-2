@@ -1,3 +1,15 @@
+/**
+ * Name: Kishan S Patel
+ * Email: kishan.patel@digipen.edu
+ * Assignment Number: 2
+ * Course: CS200
+ * Term: Fall 2024
+ *
+ * File: MyMesh.h
+ *
+ *  Header file for custom student mesh
+ */
+
 #pragma once
 
 #include <vector>
