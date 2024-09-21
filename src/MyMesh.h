@@ -22,6 +22,9 @@ namespace cs200 {
     std::vector<Edge> edges{};
     std::vector<Face> faces{};
 
+    /**
+     * Bounding Box information;
+     */
     struct {
       glm::vec4 center{}, size{};
     } bounding;
@@ -46,8 +49,17 @@ namespace cs200 {
     const Edge *edgeArray() const override;
 
   private:
+    /**
+     * @brief Calcualtes bounding box from existing vertices
+     */
     void calculate_bounding_box();
+
     static float easing_function(float t);
+
+    /**
+     * @brief Simple helper function to convert polar coordinates to cartesian cause its a lot easier to
+     * do the spiral stuff with polar
+     */
     static glm::vec4 polar_to_cartesian(glm::vec2 polar, bool point = true);
   };
 } // namespace cs200
