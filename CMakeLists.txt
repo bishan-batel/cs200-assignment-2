@@ -17,7 +17,7 @@ find_package(GLEW REQUIRED)
 add_compile_options (-fdiagnostics-color=always)
 add_compile_options(-Wextra -Wall -Wpedantic -std=c++11)
 
-add_executable(test src/MyMeshTest.cpp src/Affine.cpp src/SquareMesh.cpp src/MyMesh.h src/MyMesh.cpp)
+add_executable(test src/SolidRenderTest.cpp src/Affine.cpp src/SquareMesh.cpp src/SolidRender.cpp)
 target_link_libraries(test PRIVATE OpenGL glm::glm SDL2::SDL2 ${GLEW_LIBRARIES})
 include_directories(test ${GLEW_INCLUDE_DIRS} ${})
 
